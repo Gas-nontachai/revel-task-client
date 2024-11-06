@@ -18,19 +18,9 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      apiBaseUrl: 'http://localhost:5990',
-      // socketUrl: 'http://localhost:5990',
-      // socketPath: '/socket.io',
-
-      // apiBaseUrl: 'https://rvscs-develop.com/ttcenter-service',
-      socketUrl: 'https://rvscs-develop.com',
-      socketPath: '/ttcenter-socket/socket.io',
-      apiExportUrl: 'https://ttcenter-export.rvscs-support.com',
-
-      // apiBaseUrl: 'https://ttcenter.rvscs-support.com/ttcenter-service',
-      // socketUrl: 'https://ttcenter.rvscs-support.com',
-      // socketPath: '/ttcenter-socket/socket.io',
-      // apiExportUrl: 'https://ttcenter-export.rvscs-support.com',
+      apiBaseUrl: 'http://localhost:5120',
+      socketUrl: 'http://localhost:5120',
+      socketPath: '/socket.io',
     }
   }
 });

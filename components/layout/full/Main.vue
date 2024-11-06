@@ -12,7 +12,9 @@ const notifyStore = useNotifyStore()
 
 const menuNotiQty = computed(() => Object.keys(notifyStore.menuNoti).length)
 
-sidebarItems.forEach(item => {
+const bypass = true
+
+!bypass && sidebarItems.forEach(item => {
   item.childs = item.childs.filter(child => $auth.getPermission(child.key).permission_view)
 });
 

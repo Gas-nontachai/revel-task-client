@@ -1,5 +1,5 @@
 {
-  "name": "ttcenter-client",
+  "name": "revel-task-client",
   "private": true,
   "scripts": {
     "build": "nuxt build",

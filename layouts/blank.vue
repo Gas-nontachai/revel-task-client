@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 
-const title = ref("TTCenter");
+const title = ref("revel-task");
 
 useHead({
   meta: [{ content: title }],
   titleTemplate: () => {
-    return "TTCenter login";
+    return "revel-task login";
   },
 });
 </script>
