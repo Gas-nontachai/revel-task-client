@@ -1,0 +1,86 @@
+$cell-height: 60px;
+$cell-inner-height: 58px;
+
+.schedule-container {
+  position: relative;
+  overflow: auto;
+  max-height: calc(100vh - 140px);
+  width: 100%;
+
+  table {
+    thead {
+      background-color: #EAEFF4;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 3;
+
+      tr th:first-child { 
+        background-color: #EAEFF4;
+        position: -webkit-sticky;
+        position: sticky;
+        z-index: 5;
+        left: 0px;
+      }
+    }
+    tbody {
+      z-index: 1;
+
+      tr td:first-child { 
+        background-color: #fafafa;
+        position: -webkit-sticky;
+        position: sticky;
+        z-index: 1;
+        left: 0px;
+      }
+    }
+  }
+  
+  .last-day-hour:not(:last-child){
+    border-right: 1px solid #000;
+  }
+  .appointment-row {
+    min-height: $cell-height;
+    position: relative;
+    padding: 0px;
+
+    .appointment-cell {
+      background: #3f51b5;
+      border: 1px solid #e8eaf6;
+      border-radius: 2px;
+      font-size: 0.8125rem;
+      font-weight: normal;
+      white-space: nowrap;
+      color: #fff;
+      height: $cell-inner-height;
+      overflow: hidden;
+      position: absolute;
+      padding: 4px;
+    }
+    .appointment-cell.sub-cell {
+      background: #EF9B1A;
+    }
+    .appointment-cell.process-cell {
+      background: #119B1A;
+    }
+    .appointment-subject {
+      font-weight: 500;
+      line-height: 1.2;
+    }
+    .appointment-time {
+      font-size: 0.6875rem;
+      padding: 1px 4px 2px 0;
+    }
+    .time-line {
+      background: #FF5252;
+      min-height: 70px;
+      overflow: hidden;
+      position: absolute;
+      padding: 2px;
+    }
+  }
+}
+
+.schedule-container.offset-top {
+  max-height: calc(100vh - 400px);
+}
