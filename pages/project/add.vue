@@ -168,7 +168,7 @@ async function validateProjectname() {
                         </v-row>
                         <v-row>
                             <v-col cols="12">
-                                <v-label class="mb-2">ที่อยู่</v-label>
+                                <v-label class="mb-2">รายละเอียดโปรเจคต์</v-label>
                                 <v-textarea v-model="project.project_detail" :rules="[rules.required]" density="compact"
                                     variant="outlined"></v-textarea>
                             </v-col>

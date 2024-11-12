@@ -1,19 +1,13 @@
 <script lang="ts" setup>
 import Swal from "sweetalert2"
 import { Project } from "~~/misc/types"
-import defaultProjectImage from "@/assets/images/default-project.png"
-import errorImage from "@/assets/images/error.png"
 
 definePageMeta({ middleware: ["auth"] });
 
 const { getLicenseBy, } = useLicense();
 const { getProjectByID, updateProjectBy } = useProject();
 
-const { public: publicCtx } = useRuntimeConfig()
-
 const router = useRouter();
-
-const status_options: string[] = ['active', 'inactive'];
 
 const pending = ref(false)
 const submitting = ref(false)
@@ -28,11 +22,7 @@ const project = ref<Project>({
   updateby: '',
   lastupdate: '',
 });
-// const buffer_image = ref<{
-//   project_img: { files?: File[], src: string },
-// }>({
-//   project_img: { src: '' },
-// })
+
 const license_options = ref<{ value: string; title: string; }[]>([])
 
 onMounted(async () => {
@@ -44,8 +34,12 @@ onMounted(async () => {
       query[key] = value;
     }
 
-    project.value = await getProjectByID({ project_id: query.id })
-
+    const projectData = await getProjectByID({ project_id: query.id });
+    project.value = {
+      ...projectData,
+      project_start_date: projectData.project_start_date?.substring(0, 10),
+      project_end_date: projectData.project_end_date?.substring(0, 10),
+    };
     const { docs: licenses } = await getLicenseBy({ sorter: { key: 'license_name', order: "ASC" }, })
 
     license_options.value = licenses.map(item => ({ value: item.license_id, title: item.license_name }))
@@ -66,7 +60,6 @@ async function onSubmit() {
 
     await updateProjectBy({
       project: project.value,
-      // project_img: buffer_image.value.project_img.files,
     });
 
     Swal.fire({ title: 'สำเร็จ', text: 'บันทึกข้อมูลแล้ว', icon: "success" })
@@ -99,24 +92,6 @@ function validateForm(): boolean {
 
   return true
 }
-// function changeImage(e: Event) {
-//   const reader = new FileReader();
-//   const target = e.target as HTMLInputElement;
-
-//   if (target.files?.length) {
-//     const file = target.files[0];
-
-//     reader.onloadend = () => {
-//       buffer_image.value.project_img.src = reader.result as string
-//     };
-
-//     reader.readAsDataURL(file);
-//   }
-// }
-
-// function clearImage() {
-//   buffer_image.value.project_img = { src: '' }
-// }
 </script>
 
 <template>
@@ -155,19 +130,19 @@ function validateForm(): boolean {
             </v-row>
             <v-row>
               <v-col cols="12">
-                <v-label class="mb-2">ที่อยู่</v-label>
+                <v-label class="mb-2">รายละเอียดโปรเจคต์</v-label>
                 <v-textarea v-model="project.project_detail" :rules="[rules.required]" density="compact"
                   variant="outlined"></v-textarea>
               </v-col>
             </v-row>
             <v-row>
               <v-col cols="12" sm="6" lg="4">
-                <label for="date">
+                <label>
                   กำหนดเริ่ม:</label>
                 <input type="date" :rules="[rules.required]" v-model="project.project_start_date">
               </v-col>
               <v-col cols="12" sm="6" lg="4">
-                <label for="date">กำหนดเสร็จ:</label>
+                <label>กำหนดเสร็จ:</label>
                 <input type="date" v-model="project.project_end_date">
               </v-col>
             </v-row>

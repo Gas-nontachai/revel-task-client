@@ -60,6 +60,14 @@ const deleteProjectBy = (data: { project_id: string }): Promise<Project> => secu
 }
 )
 
+const getProjectTaskByID = (data: { project_id: string }): Promise<Project> => secureFetch(
+  `${useRuntimeConfig().public.apiBaseUrl}/${prefix}/getProjectTaskByID`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data),
+}
+)
+
 export default function useProject() {
   return {
     generateProjectID,
@@ -67,6 +75,7 @@ export default function useProject() {
     getProjectByID,
     insertProject,
     updateProjectBy,
-    deleteProjectBy
+    deleteProjectBy,
+    getProjectTaskByID,
   }
 }

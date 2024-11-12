@@ -3,7 +3,6 @@ import { VDataTable } from 'vuetify/labs/components'
 import Swal from "sweetalert2";
 
 import errorImage from "@/assets/images/error.png"
-import { match } from 'assert';
 
 definePageMeta({ middleware: ["auth"] });
 
@@ -42,19 +41,12 @@ const search = ref<{
 });
 
 const submitting = ref(false)
-const project_id = ref('')
-
 
 const {
     data: projects,
     pending: pendingProjects,
     refresh: refreshProjects,
 } = await useAsyncData('projects', () => getProjectBy({
-    match: {
-        project_start_date: {
-            $gte: '2024-09-01'
-        }
-    },
     pagination: pagination.value,
     search: search.value,
     sorter: pagination.value.sorter.length ? pagination.value.sorter : { key: 'project_name', order: "ASC" },
