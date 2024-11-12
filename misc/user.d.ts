@@ -16,7 +16,7 @@ export type User = {
   addby?: string,
   adddate?: Date,
   updateby?: string,
-  lastupdate?: string,
+  lastupdate?: Date | string,
   user_fullname?: string,
   license_name?: string,
   license?: License,

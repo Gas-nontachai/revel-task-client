@@ -18,6 +18,7 @@
     "@pinia/nuxt": "^0.4.11",
     "@vuepic/vue-datepicker": "^9.0.2",
     "apexcharts": "3.36.3",
+    "axios": "^1.7.7",
     "exceljs": "^4.3.0",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",

@@ -73,7 +73,7 @@ async function onSubmit() {
       user_img: buffer_image.value.user_img.files,
     });
 
-    Swal.fire({ title: 'สำเร็จ', text: 'บันทึกข้อมูลแล้ว', icon: "success" })
+    Swal.fire({ title: 'สำเร็จ', text: 'บันทึกข้อมูลล้ว', icon: "success" })
     await router.push({ path: '/user' });
   } catch (e) {
     console.log(e)

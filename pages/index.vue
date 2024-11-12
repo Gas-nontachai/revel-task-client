@@ -2,4 +2,4 @@
 definePageMeta({ middleware: ["auth"] })
 </script>
 
-<template></template>
+<template>Index</template>
