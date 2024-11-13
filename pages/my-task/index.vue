@@ -10,7 +10,8 @@ import { title } from 'process';
 
 definePageMeta({ middleware: ["auth"] });
 
-const { getProjectBy, getProjectByID, getProjectTaskByID } = useProject();
+const { getProjectBy } = useProject();
+const { getTaskByID } = useTask();
 const { $auth } = useNuxtApp();
 const { permission_add, permission_delete, permission_edit } = $auth.getPermission('project');
 const { public: publicCtx } = useRuntimeConfig();
@@ -46,19 +47,20 @@ onMounted(async () => {
     }
 })
 
-const changeValue = async (project_id: string) => {
+const changeValue = async (task_id: string) => {
     try {
-        const response = await getProjectTaskByID({ project_id });
-        console.log(response);  // Log the full response
+        console.log('Task ID:', task_id);
 
-        // Check if there's any property like 'docs' or 'tasks' in the response
-        if (Array.isArray(response) && response.length === 0) {
-            message.value = 'No task found for the specified project.';
+        const response = await getTaskByID({ task_id });
+        console.log(response);
+
+        if (!response || (Array.isArray(response) && response.length === 0)) {
+            message.value = 'No task found for the specified task.';
         } else {
-            message.value = 'task found';
+            message.value = 'Task found';
         }
-    } catch (e) {
-        console.error('Error fetching project:', e);
+    } catch (e: any) {
+        console.error('Error fetching task:', e.message || e);
     }
 }
 

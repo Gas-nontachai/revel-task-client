@@ -76,6 +76,5 @@ export default function useProject() {
     insertProject,
     updateProjectBy,
     deleteProjectBy,
-    getProjectTaskByID,
   }
 }

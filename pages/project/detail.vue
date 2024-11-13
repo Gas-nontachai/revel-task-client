@@ -93,70 +93,7 @@ onMounted(async () => {
                 <v-label>{{ project.project_end_date }}</v-label>
               </v-col>
             </v-row>
-            <!-- <v-row>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label></v-label>
-              </v-col>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label>{{ project.project_address }}</v-label>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label>โทรศัพท์</v-label>
-              </v-col>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label>{{ project.project_tel }}</v-label>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label>Email</v-label>
-              </v-col>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label>{{ project.project_email }}</v-label>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label>Projectname</v-label>
-              </v-col>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label>{{ project.project_projectname }}</v-label>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label>สิทธ์การใช้งาน</v-label>
-              </v-col>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label>{{ project.license_name }}</v-label>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label>สถานะ</v-label>
-              </v-col>
-              <v-col cols="12" sm="6" lg="2">
-                <v-label>{{ project?.project_status }}</v-label>
-              </v-col>
-            </v-row> -->
           </v-col>
-          <!-- <v-col cols="12" sm="3" lg="2">
-            <v-row class="align-center">
-              <v-label>รูป (ถ้ามี)</v-label>
-            </v-row>
-            <v-row>
-              <v-avatar size="280">
-                <v-img :src="`${project.project_img ? `${publicCtx.apiBaseUrl}${project.project_img}` : defaultProjectImage}`" cover
-                  alt="project">
-                  <template v-slot:error>
-                    <v-img :src="errorImage" cover alt="error"></v-img>
-                  </template>
-                </v-img>
-              </v-avatar>
-            </v-row>
-          </v-col> -->
         </v-row>
       </v-card-text>
     </template>
